@@ -23,7 +23,7 @@ We shall name these 3 separate nodes Alfred, Bob and Chico.
 
 While Azure Blockchain Service takes care of the provisioning and setup of the nodes, you will need to have the public keys and connection strings of these nodes in order to follow the rest of the steps. These public keys can be obtained conveniently via the Azure portal as follows:
 
-<img width="300" src="https://github.com/vitoc/3nodes/blob/master/pk_and_cs.PNG" />
+<img width="700" src="https://github.com/vitoc/3nodes/blob/master/pk_and_cs.PNG" />
 
 Click on the specific transaction node to get to the blade for the node where you will also be able to access the connection strings. Use ```HTTPS (Access key 1)```.
 
