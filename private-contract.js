@@ -1,6 +1,6 @@
 a = eth.accounts[0]
 web3.eth.defaultAccount = a;
-web3.personal.unlockAccount(web3.eth.accounts[0], "TargusToshiba123]]]", 15000);
+web3.personal.unlockAccount(web3.eth.accounts[0], "ALFRED_NODE_PASSWORD", 15000);
 // abi and bytecode generated from simplestorage.sol:
 // > solcjs --bin --abi simplestorage.sol
 var abi = [{"constant":true,"inputs":[],"name":"storedData","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"x","type":"uint256"}],"name":"set","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"get","outputs":[{"name":"retVal","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[{"name":"initVal","type":"uint256"}],"payable":false,"type":"constructor"}];

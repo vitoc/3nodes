@@ -9,6 +9,12 @@ Follow this instruction to perform private transactions on Azure Blockchain Serv
     * [Inviting more members](https://docs.microsoft.com/en-us/azure/blockchain/service/manage-consortium-powershell#new-blockchainmemberinvitation)
 * [Geth](https://geth.ethereum.org/downloads/)
 
+In setting up the member Azure Blockchain Service instances, be sure to take note of the node password that you use:
+
+<img width="200" src="https://github.com/vitoc/3nodes/blob/master/node_password.PNG" />
+
+This instruction uses this node password, identified by *_NODE_PASSWORD below.
+
 ## Example Constants
 
 The next steps in this instruction will use example constants that you should replace with your values (usually in hash form). These example constants will appear CAPITALISED.
@@ -30,6 +36,8 @@ Click on the specific transaction node to get to the blade for the node where yo
 ## Step 1: Sending a private transaction from Alfred to Chico
 
 First, replace ```CHICO_PUBLIC_KEY``` in ```private-contract.js``` with Chico node's public key obtained from the preparatory step above.
+
+Secondly, replace ```ALFRED_NODE_PASSWORD``` in ```private-contract.js``` with Alfred's node password (specified while creating Alfred's Azure Blockchain Service instance).
 
 Once that is done, send a private transaction from Alfred to Chico. Within this code repository, do:
 
@@ -99,6 +107,8 @@ Connect to Bob via Geth with steps similar to above and repeat the following:
 Note the value 0 returned vs 42 for Chico.
 
 ## Exploring further
+
+### Updating the state of the contract
 
 You can further try to change the value of the private contract between Alfred and Chico by doing:
 
