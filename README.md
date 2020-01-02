@@ -1,13 +1,13 @@
 # 3nodes: Private transactions on Azure Blockchain Service
 
-Follow this instruction to perform private transactions on Azure Blockchain Service (Quorum). Uses `````` in a similar style to the classic [7nodes](https://github.com/jpmorganchase/quorum-examples/tree/master/examples/7nodes) example.
+Follow this instruction to perform private transactions on Azure Blockchain Service (Quorum). Uses ```geth``` in a similar style to the classic [7nodes](https://github.com/jpmorganchase/quorum-examples/tree/master/examples/7nodes) example.
 
 ## Required Setup
 
 * 3 member consortium on Azure Blockchain Service: 
     * [Create an Azure Blockchain Service blockchain member](https://docs.microsoft.com/en-us/azure/blockchain/service/create-member)
     * [Inviting more members](https://docs.microsoft.com/en-us/azure/blockchain/service/manage-consortium-powershell#new-blockchainmemberinvitation)
-* [](https://.ethereum.org/downloads/)
+* [Geth](https://geth.ethereum.org/downloads/)
 
 In setting up the member Azure Blockchain Service instances, be sure to take note of the node password that you use:
 
@@ -42,7 +42,7 @@ Secondly, replace ```ALICE_NODE_PASSWORD``` in ```private-contract.js``` with Al
 Once that is done, send a private transaction from Alice to Carol. Within this code repository, do:
 
 ```
- --exec "loadScript('private-contract.js')" attach ALICE_CONNECTION_STRING
+geth --exec "loadScript('private-contract.js')" attach ALICE_CONNECTION_STRING
 ```
 
 > The ```private-contract.js``` source is mostly similar to the one on 7nodes except for line 3 where we need to unlock the account used as it is locked by default on Azure Blockchain Service.
@@ -57,10 +57,10 @@ true
 ```
 ## Step 2: Check that Carol can see the value set by Alice
 
-To check that Carol can see the value in the private transaction, [we use  to connect](https://docs.microsoft.com/en-us/azure/blockchain/service/connect-) to Carol and ask:
+To check that Carol can see the value in the private transaction, [we use Geth to connect](https://docs.microsoft.com/en-us/azure/blockchain/service/connect-) to Carol's node and ask:
 
 ```
- attach CAROL_CONNECTION_STRING
+geth attach CAROL_CONNECTION_STRING
 ```
 
 > 
@@ -97,7 +97,7 @@ Once you have the ADDRESS, load up the contract and get the value set by Alice:
 
 As the transaction is private only between Alice and Carol, Bob should not be able to see the value ```42``` set by Alice.
 
-Connect to Bob via  with steps similar to above and repeat the following:
+Connect to Bob via Geth with steps similar to above and repeat the following:
 
 ```
 > var abi = [{"constant":true,"inputs":[],"name":"storedData","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"x","type":"uint256"}],"name":"set","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"get","outputs":[{"name":"retVal","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[{"name":"initVal","type":"uint256"}],"type":"constructor"}];
